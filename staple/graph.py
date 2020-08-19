@@ -32,3 +32,6 @@ class Graph:
             node.time += node.new_time
             node.new_time = 0
                     
+    def node_names(self):
+        """ Just return an array of node names """
+        return [node.name for node in self.nodes]

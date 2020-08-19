@@ -1,0 +1,5 @@
+TODO: Implement tui change connection
+TODO: Implement tui delete connection
+TODO: Implement tui delete node
+
+DONE: display function for grapha (print) +frontend

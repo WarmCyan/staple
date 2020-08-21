@@ -39,6 +39,17 @@ class Graph:
         """ Just return an array of node names """
         return [node.name for node in self.nodes]
 
+    def get_node_by_id(self, nid):
+        for node in self.nodes:
+            if node.id == nid:
+                return node
+
+        return None
+
+    def add_node(self, node):
+        node.id = len(self.nodes)
+        self.nodes.append(node)
+
 
     def save(self, path):
         node_cereal = []
@@ -48,7 +59,7 @@ class Graph:
         cereal = {"name": self.name, "nodes": node_cereal}
             
         with open(path, 'w') as outfile:
-            json.dump(node_cereal, outfile)
+            json.dump(cereal, outfile, indent=4)
     
     def load(self, path):
         self.nodes = []
@@ -57,8 +68,16 @@ class Graph:
 
         self.name = info["name"]
         
+        # load basic node info
         for node_info in info["nodes"]:
             node = Node()
             node.load(node_info)
             self.nodes.append(node)
         
+        # load node connections
+        for node_info in info["nodes"]:
+            current_node = self.get_node_by_id(node_info["id"])
+            for activation in node_info["activations"]:
+                node = self.get_node_by_id(activation[0])
+                current_node.add_activation(node, activation[1])
+                

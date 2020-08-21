@@ -24,6 +24,17 @@ import staple.rendering
 
 g = Graph()
 
+# n = Node("Hello")
+# n1 = Node("Test1")
+# n2 = Node("Test2")
+# 
+# n.add_activation(n1, .5)
+# n.add_activation(n2, .5)
+# 
+# g.add_node(n)
+# g.add_node(n1)
+# g.add_node(n2)
+
 
 def get_cmd():
     global g
@@ -49,7 +60,7 @@ def handle_cmd(command):
     
     if cmd_index == "1":
         n = Node(parts[1])
-        g.nodes.append(n)
+        g.add_node(n)
         return 0
     elif cmd_index == "2":
         index1 = int(parts[1])

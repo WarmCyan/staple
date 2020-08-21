@@ -41,15 +41,20 @@ class Node:
     def serialize(self):
 
         cereal_activations = []
-        for activation in activations:
-            pass
+        for activation in self.activations:
+            cereal_activations.append((activation[0].id, activation[1]))
+            
+        cereal_children = []
+        for child in self.children:
+            cereal_children.append(child.id)
         
         return {
+            "id": self.id,
             "name": self.name,
             "description": self.description,
-            "activations": self.activations,
+            "activations": cereal_activations,
             "type": self.type,
-            "children": self.children,
+            "children": cereal_children,
             "time": self.time,
             "time_hist": self.time_hist,
             "new_time": self.new_time,
@@ -58,13 +63,13 @@ class Node:
         }
 
     def load(self, dictionary):
+        self.id = dictionary["id"]
         self.name = dictionary["name"]
         self.description = dictionary["description"]
-        self.activations = dictionary["activations"]
         self.type = dictionary["type"]
-        self.children = dictionary["children"]
         self.time = dictionary["time"]
         self.time_hist = dictionary["time_hist"]
         self.new_time = dictionary["new_time"]
         self.completed = dictionary["completed"]
         self.deadline = dictionary["deadline"]
+

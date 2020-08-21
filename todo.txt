@@ -1,5 +1,3 @@
-TODO: [A] id system and fix serializing node activations
-
 TODO: Implement tui change connection
 TODO: Implement tui delete connection
 TODO: Implement tui delete node
@@ -8,3 +6,4 @@ TODO: add plan simulator +plan
 
 DONE: display function for grapha (print) +frontend
 DONE: add graph saver
+DONE: [A] id system and fix serializing node activations

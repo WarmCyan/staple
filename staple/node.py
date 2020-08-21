@@ -3,6 +3,7 @@
 
 class Node:
     def __init__(self, name=""):
+        self.id = None # auto assign??
         self.name = name
         self.description = ""
         self.activations = []
@@ -36,3 +37,34 @@ class Node:
                 child.activate()
                 self.new_time += child.new_time * child.get_connection_weight(self)
             self.activation_applied = True
+
+    def serialize(self):
+
+        cereal_activations = []
+        for activation in activations:
+            pass
+        
+        return {
+            "name": self.name,
+            "description": self.description,
+            "activations": self.activations,
+            "type": self.type,
+            "children": self.children,
+            "time": self.time,
+            "time_hist": self.time_hist,
+            "new_time": self.new_time,
+            "completed": self.completed,
+            "deadline": self.deadline,
+        }
+
+    def load(self, dictionary):
+        self.name = dictionary["name"]
+        self.description = dictionary["description"]
+        self.activations = dictionary["activations"]
+        self.type = dictionary["type"]
+        self.children = dictionary["children"]
+        self.time = dictionary["time"]
+        self.time_hist = dictionary["time_hist"]
+        self.new_time = dictionary["new_time"]
+        self.completed = dictionary["completed"]
+        self.deadline = dictionary["deadline"]

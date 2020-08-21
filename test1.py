@@ -36,7 +36,9 @@ def get_cmd():
     print("3. Change connection \t'3 NODE1 NODE2 WEIGHT'")
     print("4. Delete connection \t'4 NODE1 NODE2'")
     print("5. Delete node \t\t'5 NODE'")
-    print("6. Exit")
+    print("6. Save \t\t6 NAME")
+    print("7. Load \t\t7 NAME")
+    print("8. Exit")
     return input("> ")
 
 def handle_cmd(command):
@@ -57,6 +59,14 @@ def handle_cmd(command):
         g.nodes[index2].add_activation(g.nodes[index1], weight)
         return 0
     elif cmd_index == "6":
+        name = parts[1]
+        g.save(name + ".graph")
+        return 0
+    elif cmd_index == "7":
+        name = parts[1]
+        g.load(name + ".graph")
+        return 0
+    elif cmd_index == "8":
         return 1
 
 while handle_cmd(get_cmd()) != 1:

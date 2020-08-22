@@ -36,6 +36,15 @@ g = Graph()
 # g.add_node(n2)
 
 
+
+
+
+
+
+
+
+
+
 def get_cmd():
     global g
     print("Nodes: ")

@@ -13,6 +13,7 @@ class Node:
         self.time = 0.0
         self.time_hist = []
         self.new_time = 0.0  # this is for activations that have not yet been resolved?
+        self.expected_time = 0.0
         self.completed = None
         self.deadline = None
 
@@ -58,6 +59,7 @@ class Node:
             "time": self.time,
             "time_hist": self.time_hist,
             "new_time": self.new_time,
+            "expected_time": self.expected_time,
             "completed": self.completed,
             "deadline": self.deadline,
         }
@@ -70,6 +72,7 @@ class Node:
         self.time = dictionary["time"]
         self.time_hist = dictionary["time_hist"]
         self.new_time = dictionary["new_time"]
+        self.expected_time = dictionary["expected_time"]
         self.completed = dictionary["completed"]
         self.deadline = dictionary["deadline"]
 

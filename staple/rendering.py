@@ -31,3 +31,8 @@ def render_text_graph(graphviz_string):
     )
 
     return results
+
+
+
+def render_week_plan(graph, plan):
+    pass
